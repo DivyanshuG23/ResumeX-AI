@@ -34,7 +34,7 @@ const handleJDMatch = async () => {
     setLoadingMatch(true);
 
     const response = await axios.post(
-      "http://localhost:5000/match-jd",
+      "https://resumex-ai-jhrt.onrender.com/match-jd",
       {
         resumeText: data?.text,
         jobDescription

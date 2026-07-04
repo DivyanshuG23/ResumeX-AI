@@ -32,7 +32,7 @@ const handleUpload = async () => {
   try {
     setLoading(true);
     const response = await axios.post(
-      "http://localhost:5000/upload",
+      "https://resumex-ai-jhrt.onrender.com/upload",
       formData
     );
 
@@ -40,7 +40,7 @@ const handleUpload = async () => {
 
     navigate("/processing", {
       state: response.data
-    });
+    });  
 
   } catch (error) {
     setLoading(false);

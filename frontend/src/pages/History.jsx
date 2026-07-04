@@ -5,7 +5,7 @@ function History() {
     const user = JSON.parse(localStorage.getItem("user"));
 
     useEffect(() => {
-  fetch(`http://localhost:5000/history/${user.id}`)
+  fetch(`https://resumex-ai-jhrt.onrender.com/history/${user.id}`)
     .then((res) => res.json())
     .then((data) => {
       setHistory(data);
@@ -95,7 +95,7 @@ hover:shadow-[0_0_45px_rgba(34,211,238,.20)]
 
     <button
   onClick={async () => {
-    await fetch(`http://localhost:5000/history/${item._id}`, {
+    await fetch(`https://resumex-ai-jhrt.onrender.com/history/${item._id}`, {
       method: "DELETE",
     });
 
