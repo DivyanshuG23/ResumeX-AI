@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Premium SaaS Background */
+body {
+  min-height: 100vh;
+  color: white;
+  font-family: system-ui, Arial, sans-serif;
+
+  background: radial-gradient(circle at top, #1a1a2e 0%, #0a0a0a 40%, #000000 100%);
+  overflow-x: hidden;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+   scroll-padding-top: 90px;
+}
+:root {
+  --bg: #0a0a0a;
+  --card: rgba(255,255,255,0.05);
+  --border: rgba(139,92,246,0.2);
+  --primary: #8b5cf6;
+  --secondary: #ec4899;
+  --text: #ffffff;
+  --muted: #9ca3af;
+  --glow: rgba(139,92,246,0.3);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
