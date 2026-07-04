@@ -18,8 +18,8 @@ import detailedReport from "../assets/why/detailed-report.png";
 import JobMatching from "../assets/why/job-matching.png";
 import securePrivate from "../assets/why/secure-private.png";
 import heroBg from "../assets/backgrounds/hero-bg.png";
+import { useNavigate } from "react-router-dom";
 
-import { Link, useNavigate } from "react-router-dom";
 const SectionDivider = () => {
   return <div className="h-16 md:h-20"></div>;
 };
@@ -522,12 +522,12 @@ and get personalized career insights in seconds.
 
       <button
         onClick={() => {
-          if (token) {
-            window.location.href = "/upload";
-          } else {
-            setShowLoginPopup(true);
-          }
-        }}
+  if (token) {
+    navigate("/upload");
+  } else {
+    setShowLoginPopup(true);
+  }
+}}
         className="px-10 py-4 rounded-2xl bg-gradient-to-r from-cyan-500
 via-sky-500
 to-blue-600 hover:shadow-[0_0_45px_rgba(34,211,238,.45)]  font-semibold text-lg hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(168,85,247,.45)]"
