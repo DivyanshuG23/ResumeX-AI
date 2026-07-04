@@ -19,6 +19,7 @@ import JobMatching from "../assets/why/job-matching.png";
 import securePrivate from "../assets/why/secure-private.png";
 import heroBg from "../assets/backgrounds/hero-bg.png";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SectionDivider = () => {
   return <div className="h-16 md:h-20"></div>;
