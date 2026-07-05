@@ -96,7 +96,7 @@ group"
         >
           <input
             type="file"
-            accept=".pdf"
+            accept=".pdf,.doc,.docx"
             className="hidden"
             id="fileInput"
             onChange={handleFileChange}

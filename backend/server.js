@@ -9,7 +9,9 @@ import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import ResumeHistory from "./models/ResumeHistory.js";
 import { GoogleGenAI } from "@google/genai";
+import mammoth from "mammoth";
 import dotenv from "dotenv";
+
 
 dotenv.config();
 
@@ -608,19 +610,57 @@ app.post("/upload", upload.single("resume"), async (req, res) => {
 
   try {
     const fileBuffer = await fs.promises.readFile(req.file.path);
-    const dataBuffer = new Uint8Array(fileBuffer);
 
-    const loadingTask = pdfjsLib.getDocument({ data: dataBuffer });
-    const pdfDoc = await loadingTask.promise;
+let text = "";
 
-    let text = "";
+// ---------------- PDF ----------------
+if (req.file.mimetype === "application/pdf") {
 
-    for (let i = 1; i <= pdfDoc.numPages; i++) {
-      const page = await pdfDoc.getPage(i);
-      const content = await page.getTextContent();
-      const pageText = content.items.map(item => item.str).join(" ");
-      text += pageText + "\n";
-    }
+  const dataBuffer = new Uint8Array(fileBuffer);
+
+  const loadingTask = pdfjsLib.getDocument({
+    data: dataBuffer,
+    useSystemFonts: true,
+    disableFontFace: true,
+  });
+
+  const pdfDoc = await loadingTask.promise;
+
+  for (let i = 1; i <= pdfDoc.numPages; i++) {
+    const page = await pdfDoc.getPage(i);
+
+    const content = await page.getTextContent();
+
+    const pageText = content.items
+      .map(item => item.str)
+      .join(" ");
+
+    text += pageText + "\n";
+  }
+
+}
+
+// ---------------- DOCX ----------------
+else if (
+  req.file.mimetype ===
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+) {
+
+  const result = await mammoth.extractRawText({
+    buffer: fileBuffer,
+  });
+
+  text = result.value;
+}
+
+// ---------------- Unsupported ----------------
+else {
+
+  return res.status(400).json({
+    message: "Only PDF and DOCX files are supported."
+  });
+
+}
 
     // 🔥 AI LOGIC
   const score = 0;
