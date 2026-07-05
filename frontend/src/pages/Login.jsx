@@ -217,17 +217,17 @@ tracking-wide
 
       ) : (
 
-        <div className="flex flex-col items-center justify-center py-10">
+       <div className="w-full flex flex-col items-center justify-center text-center py-10 px-4">
 
   <div className="w-24 h-24 rounded-full bg-green-500/10 border border-green-500 flex items-center justify-center text-5xl text-green-400 animate-pulse">
     ✓
   </div>
 
-  <h1 className="text-4xl font-bold mt-8">
+ <h1 className="text-3xl md:text-4xl font-bold mt-8 text-center w-full">
     Login Successful
   </h1>
 
-  <p className="text-2xl text-purple-400 font-semibold mt-2">
+  <p className="text-xl md:text-2xl text-purple-400 font-semibold mt-2 text-center w-full">
     Welcome Back 👋
   </p>
 
@@ -237,7 +237,7 @@ tracking-wide
 
   <div className="mt-10 w-14 h-14 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
 
-  <p className="mt-6 text-gray-300">
+  <p className="mt-6 text-gray-300 text-center w-full">
     Redirecting to Home...
   </p>
 
